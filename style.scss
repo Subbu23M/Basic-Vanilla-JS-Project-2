@@ -1,0 +1,175 @@
+// Colors
+// (hue, saturation, lightness).
+
+$bodybackgroundcolor:hsl(210, 36%, 96%);
+$bodycolor:hsl(209, 61%, 16%);
+$togglebuttoncolor:hsl(205, 78%, 60%);
+$togglebuttonhovercolor:hsl(205, 86%, 17%);
+
+// transition:Default Value transition-duration 
+// transition-timing-function:linear	Specifies a transition effect with the same speed from start to end.
+$transition:all 0.3s linear;
+
+$navlinkscolor:hsl(209, 34%, 30%);
+$nav-linka:hsl(205, 86%, 81%);
+$navcolor:hsl(205, 78%, 60%);
+$ihover:hsl(205, 90%, 76%);
+
+body{
+    font-family: 'Piazzolla', serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: $bodybackgroundcolor;
+    color: $bodycolor;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+li{
+    list-style: none;
+}
+
+nav{
+    background: #fff;
+
+    // box-shadow:<offset-x> <offset-y> <blur-radius>
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    .nav-header{
+        // Convert columns into row
+        display: flex;
+
+        // On Y-axis
+        align-items: center;
+
+        // On X-axis
+        justify-content: space-between;
+
+        padding: 1rem;
+
+        .logo{
+            height: 40px;
+        }
+
+        .toggle-button{
+            font-size: 2rem;
+
+            // Transparent color in CSS makes background elements visible from another top element of the page.
+            background: transparent;
+            border-color: transparent;
+
+            color: $togglebuttoncolor;
+            cursor: pointer;
+            transition: $transition;
+        }
+        .toggle-button:hover{
+            color: $togglebuttonhovercolor;
+            transform: rotate(90deg);
+        }
+    }
+    .nav-links{
+        height: 0;
+        overflow: hidden;
+        transition: $transition;
+
+        li a{
+            color: $navlinkscolor;
+            text-transform: capitalize;
+            font-size: 1rem;
+
+            // padding: top & bottom left & right
+            padding: 0.5rem 1rem;
+
+            letter-spacing: 0.2rem;
+
+            // Displays an element as a block element (like <p>). It starts on a new line, and takes up the whole width.
+            display: block;
+
+            transition: $transition;
+        }
+        li a:hover{
+            background: $nav-linka;
+            color: $togglebuttoncolor;
+            padding-left: 2rem;
+        }
+    }
+    .show-links{
+        height: 10rem;
+    }
+    
+    .social-media-icons{
+        display: none;
+    }
+}
+
+@media screen and (min-width:800px){
+    nav{
+        .nav-center{
+            max-width: 1170px;
+            margin: 0 auto;
+
+            // Convert columns into row
+            display: flex;
+
+            // On Y-axis
+            align-items: center;
+
+            // On X-axis
+            justify-content: space-between;
+
+            padding: 1rem;
+
+            .nav-header{
+                padding: 0;
+            }
+
+            .toggle-button{
+                display: none;
+            }
+
+            .nav-links{
+                height: auto;
+
+                // Convert columns into row
+                display: flex;
+
+                a{
+                    padding: 0;
+
+                    // margin: top & bottom left & right
+                    margin: 0 0.5rem;
+                }
+                .nav-links a:hover{
+                    // Transparent color in CSS makes background elements visible from another top element of the page.
+                    background: transparent;
+                    
+                    padding: 0;
+                }
+            }
+            .social-media-icons{
+                // Convert columns into row
+                display: flex;
+
+                font-size: 1.3rem;
+
+                li a{
+                     // margin: top & bottom left & right
+                    margin: 0 0.5rem;
+
+                    color: $togglebuttoncolor;
+                    transition: $transition;
+                }
+            }
+            .social-media-icons li a:hover{
+                color: $ihover;
+            }
+        }
+    }
+}
